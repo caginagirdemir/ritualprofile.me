@@ -94,3 +94,23 @@ input[type="file"] {
 .text-green {
     color: #57f287;
 }
+
+/* Stylish Made by footer */
+.made-by {
+    margin-top: 24px;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #b9bbbe;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+.made-by a {
+    color: #7289da;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.made-by a:hover {
+    color: #99aab5;
+    text-decoration: underline;
+}
