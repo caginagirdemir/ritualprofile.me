@@ -1,0 +1,96 @@
+body {
+    background: #23272a;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #2c2f33;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    padding: 32px 24px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 12px;
+    font-size: 2rem;
+    color: #7289da;
+}
+
+.upload-section {
+    margin-bottom: 24px;
+}
+
+.upload-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fff;
+}
+
+input[type="file"] {
+    display: block;
+    margin: 0 auto;
+}
+
+.patterns-section {
+    margin-bottom: 24px;
+}
+
+#patterns-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.pattern-option {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border 0.2s;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    background: #23272a;
+}
+
+.pattern-option.selected {
+    border: 2px solid #7289da;
+}
+
+.canvas-section {
+    margin-bottom: 24px;
+}
+
+#profile-canvas {
+    border-radius: 50%;
+    background: #23272a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    width: 256px;
+    height: 256px;
+}
+
+#download-btn {
+    background: #7289da;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#download-btn:hover {
+    background: #5b6eae;
+} 
+
+.text-green {
+    color: #57f287;
+}

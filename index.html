@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritual Profile Image Maker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-green">Ritual</h1>
+        <h2>Discord Profile Image Maker</h2>
+        <div class="upload-section">
+            <label for="profile-upload" class="upload-label">Upload Your Profile Image</label>
+            <input type="file" id="profile-upload" accept="image/png, image/jpeg">
+        </div>
+        <div class="patterns-section">
+            <h2>Select a Pattern</h2>
+            <div id="patterns-list">
+                <!-- Pattern options will be inserted here -->
+            </div>
+            <p class="pattern-desc">Tip: You can resize the selected pattern by scrolling your mouse wheel over the image.</p>
+        </div>
+        <div class="canvas-section">
+            <canvas id="profile-canvas" width="256" height="256"></canvas>
+        </div>
+        <button id="download-btn">Download Image</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
