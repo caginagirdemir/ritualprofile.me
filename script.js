@@ -30,6 +30,14 @@ let patternState = {
     offsetY: 0
 };
 
+const backgroundOptions = [
+    { type: 'image', value: 'background/background1.png', label: 'Image 1' },
+    { type: 'image', value: 'background/background2.png', label: 'Image 2' }
+];
+
+const backgroundsList = document.getElementById('backgrounds-list');
+let selectedBackground = backgroundOptions[0];
+
 // Load pattern options
 patternImages.forEach((src, idx) => {
     const img = document.createElement('img');
@@ -51,6 +59,28 @@ patternImages.forEach((src, idx) => {
         patternImgObj.src = src;
     });
     patternsList.appendChild(img);
+});
+
+backgroundOptions.forEach((bg, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'background-option';
+    btn.textContent = bg.label;
+    if (bg.type === 'color') {
+        btn.style.background = bg.value;
+        btn.style.color = (bg.value === '#fff' || bg.value === 'transparent') ? '#23272a' : '#fff';
+    } else if (bg.type === 'image') {
+        btn.style.backgroundImage = `url('${bg.value}')`;
+        btn.style.backgroundSize = 'cover';
+        btn.style.color = '#fff';
+    }
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.background-option').forEach(el => el.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedBackground = bg;
+        drawCanvas();
+    });
+    if (idx === 0) btn.classList.add('selected');
+    backgroundsList.appendChild(btn);
 });
 
 profileUpload.addEventListener('change', (e) => {
@@ -125,8 +155,39 @@ profileCanvas.addEventListener('wheel', (e) => {
 }, { passive: false });
 
 function drawCanvas() {
-    // Clear canvas
     ctx.clearRect(0, 0, profileCanvas.width, profileCanvas.height);
+    // Draw background (outside the circle)
+    if (selectedBackground.type === 'color' && selectedBackground.value !== 'transparent') {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(128, 128, 128, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.fillStyle = selectedBackground.value;
+        ctx.fillRect(0, 0, 256, 256);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.restore();
+        drawProfileAndPattern();
+    } else if (selectedBackground.type === 'image') {
+        const bgImg = new window.Image();
+        bgImg.onload = function() {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(128, 128, 128, 0, Math.PI * 2, true);
+            ctx.closePath();
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.drawImage(bgImg, 0, 0, 256, 256);
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.restore();
+            drawProfileAndPattern();
+        };
+        bgImg.src = selectedBackground.value;
+    } else {
+        drawProfileAndPattern();
+    }
+}
+
+function drawProfileAndPattern() {
     // Draw uploaded image as a circle
     if (uploadedImage) {
         ctx.save();
