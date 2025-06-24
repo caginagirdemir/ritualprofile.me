@@ -2,7 +2,12 @@
 const patternImages = [
     'patterns/pattern1.png',
     'patterns/pattern2.png',
-    'patterns/pattern3.png'
+    'patterns/pattern3.png',
+    'patterns/pattern-black.png',
+    'patterns/pattern-white.png',
+    'patterns/pattern-orange.png',
+    'patterns/pattern-pink.png',
+    'patterns/pattern-yellow.png'
 ];
 
 const patternsList = document.getElementById('patterns-list');
